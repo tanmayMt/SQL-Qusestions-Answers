@@ -1,0 +1,2 @@
+Teacher(t_no,t_name,salary,dept_no)
+Dept(dept_no,dept_name)

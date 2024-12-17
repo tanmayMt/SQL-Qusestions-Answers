@@ -1,0 +1,181 @@
+create table LOCATION
+(
+ Location_ID numeric primary key,
+ REginal_Group varchar(9)
+);
+insert into LOCATION values(122,"NEW YORK");
+insert into LOCATION values(123,"DALLES");
+insert into LOCATION values(124,"CHICAGO");
+insert into LOCATION values(127,"BOSTON");
+select * from LOCATION;
+---------------------------------------------------------------------------
+create table DEPARTMENT
+(
+ Department_ID numeric,
+ D_Name varchar(14),
+ Location_ID numeric,
+ primary key(Department_ID),
+ foreign key(Location_ID) references LOCATION(Location_ID)
+);
+insert into DEPARTMENT values (10,"ACCOUNTING",122);
+insert into DEPARTMENT values (20,"RESEARCH",124);
+insert into DEPARTMENT values (30,"SALES",123);
+insert into DEPARTMENT values (40,"OPERATION",167);
+-----------------------------------------------------------------------------
+create table JOB
+(
+ Job_ID numeric,
+ J_Function varchar(15),
+ primary key(JOB_ID)
+);
+insert into JOB values (667,"CLARK");
+insert into JOB values (668,"STAFF");
+insert into JOB values (669,"ANALYST");
+insert into JOB values (670,"SALESPERSON");
+insert into JOB values (671,"MANAGER");
+insert into JOB values (672,"PRESIDENT");
+------------------------------------------------------------------------------
+create table EMPLOYEE
+(
+ Employee_ID numeric,
+ Last_name varchar(9),
+ First_name varchar(9),
+ Midle_name varchar(2),
+ Job_ID numeric,
+ Manager_ID numeric,
+ Hirdate date,
+ Salary numeric,
+ Comm numeric,
+ Department_ID numeric,
+ primary key(Employee_ID)
+);
+
+insert into EMPLOYEE values (7369,"SMITH","JOHN",'Q',667,7902,"84-12-17",800,null,20);
+insert into EMPLOYEE values (7499,"ALLEN","KEVIN",'J',670,7698,"85-02-20",1600,300,30);
+insert into EMPLOYEE values (7505,"DOYLE","JEAN",'K',671,7839,"85-04-04",2850,null,30);
+insert into EMPLOYEE values (7505,"DENNIS","LYNN",'S',671,7839,"85-03-15",2750,null,30);
+insert into EMPLOYEE values (7506,"BAKER","LESIE",'D',671,7839,"85-06-10",2200,null,40);
+insert into EMPLOYEE values (7507,"WARK","CYNTHIA",'D',670,7698,"85-02-22",1250,500,30);
+SELECT * FROM EMPLOYEE;
+#############################################################################################################
+
+//Where Condition
+8:
+select * from EMPLOYEE
+where Last_Name="SMITH";
+
+
+9:
+select First_name,Last_name from EMPLOYEE
+where  Depamtment_ID=20;
+
+
+10:
+select First_name,Last_name from EMPLOYEE
+where  Salary <=4500 and Salary >= 3000;
+
+
+11:
+select First_name,Last_name from EMPLOYEE
+where  Depamtment_ID = 10 or 20;
+
+
+12:
+select First_name,Last_name from EMPLOYEE
+where  Depamtment_ID != 10 or 30;
+
+
+13:
+select Last_name from EMPLOYEE
+where  Last_name like 'S%';
+
+
+14:
+select Last_name from EMPLOYEE
+where  Last_name like 'S%H';
+
+
+15:
+select Last_name from EMPLOYEE
+where  Last_name like 'S____';
+
+16:
+select First_name,Last_name from EMPLOYEE
+where  Depamtment_ID = 10 and Salary > 3500;
+
+
+17:            NOT WORKING!!!!!!!!!!!!!!!!!
+select First_name,Last_name from EMPLOYEE
+where  Comm = null;
+
+
+18:
+select Employee_ID,Last_Name from EMPLOYEE
+order by Employee_ID;
+
+
+19:
+select Employee_ID,Last_Name from EMPLOYEE
+order by Salary desc;
+
+
+20:
+select * from EMPLOYEE
+order by Last_Name asc,Salary desc;
+
+
+21:
+select * from EMPLOYEE
+order by Last_Name asc,Depamtment_ID desc;
+
+22:
+select Department_ID,count(Department_ID) as No_of_Employee from EMPLOYEE
+group by Department_ID;
+
+
+23:
+select Department_ID, max(Salary),min(Salary),avg(Salary) from EMPLOYEE
+group by Department_ID;
+
+
+24:
+select Department_ID, count() from EMPLOYEE
+group by Department_ID;
+
+
+25:
+select month(Hirdate), count(*) from EMPLOYEE
+group by month(Hirdate)
+order by month(Hirdate);
+
+
+26
+select month(Hirdate),year(Hirdate),count(*) from EMPLOYEE
+group by year(Hirdate), month(Hirdate)
+order by month(Hirdate);
+
+
+27:
+select  Department_ID,count(Employee_ID) from EMPLOYEE
+group by Department_ID having count(Employee_ID)=3;
+
+
+28:
+select month(Hirdate) as mon, count(Employee_ID) from EMPLOYEE
+group by month(Hirdate) having mon = "Jan" ;
+
+
+29:
+select month(Hirdate) as mon, count(Employee_ID) from EMPLOYEE
+group by month(Hirdate) having mon = "JAN" or mon = "DEC";
+
+
+
+
+
+
+................................................
+alter table EMPLOYEE
+rename column Depamtment_ID to Department_ID;
+.................................................
+

@@ -1,0 +1,9 @@
+STUDENT(st_roll,st_name,st_address,sub-id)
+
+TEACHER(t_name,t_address,t_designation)
+
+CLASS(cl_room,year,sub_id)
+
+MARKS(st_roll,sub_id,marks)
+
+SUBJECT(sub-id,t_name)

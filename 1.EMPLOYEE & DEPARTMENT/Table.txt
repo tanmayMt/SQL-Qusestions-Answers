@@ -1,0 +1,2 @@
+EMPLOYEE(emp_id,emp_name,salary,dept_no);
+DEPARTMENT(dept_no,dept_name,location);

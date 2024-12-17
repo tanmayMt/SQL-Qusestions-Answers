@@ -1,0 +1,13 @@
+PROJECT(p_no,p_name,location,architect)
+
+EMPLOYEE(e_no,e_name,city,salary)
+
+ASSIGNED_TO(p_no,e_no)
+
+FINANCE_BY(p_no,company_name,amount)
+
+
+1)List the names of architect of project financed by UCO Bank and amount exceeds 2 Core.
+2)List the name of all employees who work on all project located at Kolkata financed by WBIDC.
+3)List the name of employees with project name who are assigned to projects in their cites of residence.
+4)List the name of project and the architects financed by UCO and project amount.

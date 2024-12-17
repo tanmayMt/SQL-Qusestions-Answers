@@ -1,0 +1,3 @@
+
+delete from SALESMAN_MASTER
+where SALESMANNO = "S00004";

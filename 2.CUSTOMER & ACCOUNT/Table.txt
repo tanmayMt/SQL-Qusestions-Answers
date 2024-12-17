@@ -1,0 +1,2 @@
+CUSTOMER(c_id,c_name,c_city,accn_no)
+ACCOUNT (accn_no,accn_type,amount)
