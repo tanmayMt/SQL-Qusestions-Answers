@@ -57,12 +57,15 @@ VALUES
 	MANAGER_ID NUMERIC(6,0), 
 	DEPARTMENT_ID NUMERIC(4,0)
    );
-   
+INSERT INTO udemy_less_record.EMPLOYEES (EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,JOB_ID,SALARY,COMMISSION_PCT,MANAGER_ID,DEPARTMENT_ID) VALUES (102,'Lex','De Haan','LDEHAAN','515.123.4569',STR_TO_DATE('13-JAN-01','%d-%b-%y'),'AD_VP',17000,null,100,90);
 INSERT INTO udemy_less_record.EMPLOYEES (EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,JOB_ID,SALARY,COMMISSION_PCT,MANAGER_ID,DEPARTMENT_ID) VALUES
+(100,'Steven','King','SKING','515.123.4567',STR_TO_DATE('17-JUN-03','%d-%b-%y'),'AD_PRES',24000,null,null,90),
+(103,'Alexander','Hunold','AHUNOLD','590.423.4567',STR_TO_DATE('03-JAN-06','%d-%b-%y'),'IT_PROG',9000,null,102,60),
 (104,'Bruce','Ernst','BERNST','590.423.4568',STR_TO_DATE('21-MAY-07','%d-%b-%y'),'IT_PROG',6000,null,103,60),
 (105,'David','Austin','DAUSTIN','590.423.4569',STR_TO_DATE('25-JUN-05','%d-%b-%y'),'IT_PROG',4800,null,103,60),
 (106,'Valli','Pataballa','VPATABAL','590.423.4560',STR_TO_DATE('05-FEB-06','%d-%b-%y'),'IT_PROG',4800,null,103,60),
 (107,'Diana','Lorentz','DLORENTZ','590.423.5567',STR_TO_DATE('07-FEB-07','%d-%b-%y'),'IT_PROG',4200,null,103,60),
+(201, 'Michael', 'Hartstein', 'MHARTSTE', '515.123.5555', STR_TO_DATE('17-FEB-04', '%d-%b-%y'), 'MK_MAN', 13000, NULL, 100, 20),
 (202, 'Pat', 'Fay', 'PFAY', '603.123.6666', STR_TO_DATE('17-AUG-05', '%d-%b-%y'), 'MK_REP', 6000, NULL, 201, 20);
    
 --------------------------------------------------------
@@ -138,9 +141,18 @@ Insert into REGIONS (REGION_ID,REGION_NAME) values (3,'Asia');
 Insert into REGIONS (REGION_ID,REGION_NAME) values (4,'Middle East and Africa');
 
 
+--------------------------------------------------------
+--  DDL for Table PAYOUTS
+--------------------------------------------------------
+use udemy_less_record;
+CREATE TABLE PAYOUTS
+(
+    EMPLOYEE_ID NUMERIC(6,0), -- Employee ID
+    payment_date  DATE,            -- Payment date
+    payment_type  VARCHAR(10),    -- Payments can be two types, "Salary" and "Bonus"
+    payout_amount NUMERIC(6,0),          -- The amount of the payment
+    CONSTRAINT fk_employee_id FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
 
-
-
-
-
-
+-- Repeat the same structure for employee_id 101 to 206
+-- Example for 101

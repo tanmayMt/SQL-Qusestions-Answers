@@ -78,6 +78,17 @@ CREATE TABLE REGIONS
     REGION_ID int PRIMARY KEY, 
     REGION_NAME VARCHAR(25)
 );
+--------------------------------------------------------
+--  DDL for Table PAYOUTS
+--------------------------------------------------------
+CREATE TABLE PAYOUTS
+(
+    EMPLOYEE_ID NUMERIC(6,0), -- Employee ID
+    payment_date  DATE,            -- Payment date
+    payment_type  VARCHAR(10),    -- Payments can be two types, "Salary" and "Bonus"
+    payout_amount NUMERIC(6,0),          -- The amount of the payment
+    CONSTRAINT fk_employee_id FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
 
 --------------------------------------------------------
 --  Insert Records for Tables
@@ -316,4 +327,69 @@ Insert into REGIONS (REGION_ID,REGION_NAME) values (1,'Europe');
 Insert into REGIONS (REGION_ID,REGION_NAME) values (2,'Americas');
 Insert into REGIONS (REGION_ID,REGION_NAME) values (3,'Asia');
 Insert into REGIONS (REGION_ID,REGION_NAME) values (4,'Middle East and Africa');
+
+use udemy;
+-- PAYOUT
+-- Repeat the same structure for employee_id 101 to 206
+-- Example for 101
+-- For employee 105
+INSERT INTO PAYOUTS (employee_id, payment_date, payment_type, payout_amount) VALUES
+(105, STR_TO_DATE('01-JAN-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-FEB-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-MAR-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-APR-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-MAY-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-JUN-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-JUL-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-AUG-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-SEP-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-OCT-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-NOV-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-DEC-21', '%d-%b-%y'), 'Salary', 7000),
+(105, STR_TO_DATE('01-JAN-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-FEB-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-MAR-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-APR-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-MAY-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-JUN-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-JUL-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-AUG-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-SEP-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-OCT-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-NOV-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-DEC-22', '%d-%b-%y'), 'Salary', 7700),
+(105, STR_TO_DATE('01-JAN-23', '%d-%b-%y'), 'Salary', 8470);
+
+-- Repeat for employees 106 to 206, with similar salary structure, and increasing by 10% every year
+
+-- For employee 106
+INSERT INTO udemy.PAYOUTS (employee_id, payment_date, payment_type, payout_amount) VALUES
+(106, STR_TO_DATE('01-JAN-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-FEB-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-MAR-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-APR-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-MAY-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-JUN-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-JUL-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-AUG-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-SEP-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-OCT-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-NOV-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-DEC-21', '%d-%b-%y'), 'Salary', 7200),
+(106, STR_TO_DATE('01-JAN-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-FEB-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-MAR-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-APR-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-MAY-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-JUN-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-JUL-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-AUG-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-SEP-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-OCT-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-NOV-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-DEC-22', '%d-%b-%y'), 'Salary', 7920),
+(106, STR_TO_DATE('01-JAN-23', '%d-%b-%y'), 'Salary', 8712);
+
+-- Similarly for employees 107 to 206, the salary increases by 10% each year.
+-- Continue this pattern for employees 106 to 206.
 
