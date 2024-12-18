@@ -14,3 +14,11 @@ SELECT e.employee_id, e.first_name, e.last_name, e.job_id, e.salary,
 FROM employees e JOIN jobs j
 ON e.salary > j.max_salary
 AND j.job_id = 'SA_REP';
+
+-- Finding duplicates in a table
+-- Create a report of employees whose first_name are same in employees table
+use udemy;
+SELECT e1.employee_id, e1.first_name, e1.last_name
+FROM employees e1 JOIN employees e2
+ON e1.employee_id <> e2.employee_id
+AND e1.first_name = e2.first_name;
