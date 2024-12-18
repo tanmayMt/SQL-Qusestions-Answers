@@ -22,3 +22,10 @@ SELECT e1.employee_id, e1.first_name, e1.last_name
 FROM employees e1 JOIN employees e2
 ON e1.employee_id <> e2.employee_id
 AND e1.first_name = e2.first_name;
+
+-- Find records where salary is between min_salary and max_salary
+use udemy_less_record;
+use udemy;
+SELECT e.first_name, e.last_name, j.job_title, e.salary, j.min_salary, j.max_salary 
+FROM employees e JOIN jobs j 
+ON e.salary BETWEEN j.min_salary AND j.max_salary;
