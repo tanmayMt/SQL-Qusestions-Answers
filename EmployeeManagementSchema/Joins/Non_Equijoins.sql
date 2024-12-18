@@ -29,3 +29,13 @@ use udemy;
 SELECT e.first_name, e.last_name, j.job_title, e.salary, j.min_salary, j.max_salary 
 FROM employees e JOIN jobs j 
 ON e.salary BETWEEN j.min_salary AND j.max_salary;
+
+-- Compute the running total of a particular column
+-- For Example
+-- After every Payment, we want to know the total amount that the company pay to an employee so far
+select p1.payment_date,p1.payout_amount,sum(p2.payout_amount) as total_payment
+from PAYOUTS p1 join PAYOUTS p2
+on p1.payment_date >= p2.payment_date and p1.employee_id=p2.employee_id
+where p1.employee_id = 100
+group by p1.payout_amount,p1.payment_date
+order by p1.payment_date;
